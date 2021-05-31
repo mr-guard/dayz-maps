@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>DayZ Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.0/css/all.css">
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+    <style>
+        #map {
+            background-color: rgba(38, 38, 38, 1);
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            overflow: hidden;
+        }
+        
+        .position {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 2px;
+            bottom: calc(90px + 2em);
+            color: #fff;
+            left: 50%;
+            margin-left: -70px;
+            margin-bottom: 10px;
+            padding: 2px;
+            position: absolute;
+            text-align: center;
+            width: 140px;
+            z-index: 10;
+            font-family: Roboto, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            font-weight: 300;
+        }
+
+        .leaflet-tooltip {
+            background: none;
+            box-shadow: none;
+            border: none;
+            color: #fff;
+            font-family: Roboto, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            font-weight: 300;
+            padding-top: 0;
+            text-align: center;
+            white-space: pre;
+        }
+
+        .locationIcon {
+            color: #fff;
+        }
+
+        .locationIcon > i {
+            text-align: center;
+            width: 100%;
+        }
+    </style>
+    <script>
+    (async () => {
+        console.log('init');
+        const data = await (await fetch("./data.json")).json();
+        console.log('data', data);
+
+        var map = L.map('map', {
+            minZoom: data.minZoom,
+            maxZoom: data.maxZoom,
+            zoom: data.defaultZoom,
+            center: [0,0],
+            crs: L.CRS.Simple,
+            layers: [
+                L.tileLayer(
+                    data.tilePattern,
+                ),
+            ]
+        });
+
+        const zoom = Math.ceil(
+            Math.log(data.worldSize / 256) / Math.log(2)
+        );
+        const project = (coords) => {
+            return map.project(coords, zoom);
+        };
+        const unproject = (coords) => {
+            return map.unproject(coords, zoom);
+        };
+
+        map.setView(unproject(data.center));
+
+        map.on('mousemove', (event) => {
+            var coords = project(event.latlng);
+            document.getElementById("position").innerHTML = coords.x.toFixed(2) + ' | ' + coords.y.toFixed(2);
+        });
+
+        const locationMarkers = [];
+        for (let x of data.locations) {
+            if (x.name) {
+                const pos = unproject([x.position[0], data.worldSize - x.position[1]]);
+                
+                let name = x.name;
+                let icon = 'city';
+                switch (x.type.toLowerCase()) {
+                    case 'marine': {
+                        icon = 'anchor';
+                        break;
+                    }
+                    case 'ruin': {
+                        icon = 'chess-rook'
+                        break;
+                    }
+                    case 'mount':
+                    case 'hill': {
+                        icon = 'mountain';
+                        break;
+                    }
+                    case 'camp': {
+                        icon = 'campground'
+                        break;
+                    }
+                    case 'local':
+                    case 'village': {
+                        icon = 'home';
+                        break;
+                    }
+                    case 'capital': {
+                        icon = 'university';
+                        break;
+                    }
+                    case 'settlement':
+                    default: {
+                        icon = 'city';
+                        break;
+                    }
+                }
+
+                if (x.cfgName) {
+                    
+                    let detail = x.cfgName;
+
+                    if (x.cfgName.includes('_')) {
+                        const nameSplits = x.cfgName.split('_').filter((x) => !!x);
+                        
+                        if (['local', 'settlement', 'marine', 'ruin', 'camp', 'hill'].includes(nameSplits[0].toLowerCase())) {
+                            nameSplits.splice(0, 1);
+                        }
+                        
+                        detail = nameSplits.join(' ');
+                        if (detail.startsWith('AF')) {
+                            icon = 'plane';
+                        } else if (detail.startsWith('MB')) {
+                            icon = 'crosshairs';
+                        }
+                    }
+
+                    
+                    name += `\n(${detail})`;
+                }
+                
+                const m = L.marker(
+                    pos,
+                    {
+                        icon: L.divIcon({
+                            html: `<i class="fa fa-${icon} fa-lg"></i>`,
+                            iconSize: [50, 50],
+                            className: 'locationIcon'
+                        })
+                    }
+                ).addTo(map);
+                
+                locationMarkers.push({
+                    marker: m,
+                    toolTip: m.bindTooltip(
+                        name,
+                        {
+                            permanent: true,
+                            direction : 'bottom'
+                        },
+                    ),
+                });
+            }
+        }
+
+        let curZoom;
+        const showTooltipAt = 4;
+        const toggleTooltips = () => {
+            const newZoom = map.getZoom();
+            if (newZoom < showTooltipAt && (!curZoom || curZoom >= showTooltipAt)) {
+                map.eachLayer((l) => {
+                    if (l.getTooltip) {
+                        var toolTip = l.getTooltip();
+                        if (toolTip) {
+                            map.closeTooltip(toolTip);
+                        }
+                    }
+                });
+            } else if (newZoom >= showTooltipAt && (!curZoom || curZoom < showTooltipAt)) {
+                map.eachLayer((l) => {
+                    if (l.getTooltip) {
+                        var toolTip = l.getTooltip();
+                        if (toolTip) {
+                            map.addLayer(toolTip);
+                        }
+                    }
+                });
+            }
+            curZoom = newZoom;
+        };
+        toggleTooltips();
+        map.on('zoomend', toggleTooltips);
+    })()
+    </script>
+</head>
+
+<body>
+    <div id="map"></div>
+    <div class="position" id="position">0 | 0</div>    
+</body>
+
+
+</html>

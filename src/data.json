@@ -1,0 +1,1214 @@
+{
+    "chernarusplus": {
+        "workshopId": "",
+        "extractPbos": [
+            "worlds_chernarusplus.pbo",
+            "worlds_chernarusplus_data.pbo"
+        ],
+        "cfgWorlds": "DZ/worlds/chernarusplus/world/config.cpp",
+        "layersFolder": "DZ/worlds/chernarusplus/data/layers"
+    },
+    "napfz": {
+        "workshopId": "1917921897",
+        "extractPbos": [
+            "napfz.pbo"
+        ],
+        "cfgWorlds": "napfz/config.cpp",
+        "layersFolder": "napfz/data/layers",
+        "worldSize": 20480,
+        "locations": [
+            {
+                "name": "Lenzburg",
+                "position": [
+                    8939.89,
+                    16099.4
+                ],
+                "type": "City"
+            },
+            {
+                "name": "Trueb",
+                "position": [
+                    7467.08,
+                    14261.2
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "Truebsal",
+                "position": [
+                    8661.26,
+                    14349.2
+                ],
+                "type": "Local"
+            },
+            {
+                "name": "Wasen",
+                "position": [
+                    7385.5,
+                    15887
+                ],
+                "type": "Local"
+            },
+            {
+                "name": "Seltisberg",
+                "position": [
+                    5901.15,
+                    15438.5
+                ],
+                "type": "City"
+            },
+            {
+                "name": "Seltishafen",
+                "position": [
+                    5466.87,
+                    15935
+                ],
+                "type": "Local"
+            },
+            {
+                "name": "Neue Welt",
+                "position": [
+                    6002.88,
+                    13476
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "Bubendorf",
+                "position": [
+                    4054.72,
+                    14484.9
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "Seewen",
+                "position": [
+                    6545.61,
+                    16584.9
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "Huttwil",
+                "position": [
+                    4602.19,
+                    12298.9
+                ],
+                "type": "City"
+            },
+            {
+                "name": "Ruchfeld",
+                "position": [
+                    5933.07,
+                    12658.4
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "",
+                "position": [
+                    8792.08,
+                    16033
+                ],
+                "type": "BorderCrossing"
+            },
+            {
+                "name": "",
+                "position": [
+                    7356.36,
+                    15961.9
+                ],
+                "type": "BorderCrossing"
+            },
+            {
+                "name": "",
+                "position": [
+                    5739.54,
+                    15298.8
+                ],
+                "type": "BorderCrossing"
+            },
+            {
+                "name": "",
+                "position": [
+                    6541.44,
+                    16631.8
+                ],
+                "type": "BorderCrossing"
+            },
+            {
+                "name": "",
+                "position": [
+                    5436.51,
+                    15982.8
+                ],
+                "type": "BorderCrossing"
+            },
+            {
+                "name": "",
+                "position": [
+                    3819.53,
+                    14326.1
+                ],
+                "type": "BorderCrossing"
+            },
+            {
+                "name": "",
+                "position": [
+                    4742.82,
+                    12238.3
+                ],
+                "type": "BorderCrossing"
+            },
+            {
+                "name": "",
+                "position": [
+                    5909.81,
+                    13713
+                ],
+                "type": "BorderCrossing"
+            },
+            {
+                "name": "",
+                "position": [
+                    7564.64,
+                    14079.2
+                ],
+                "type": "BorderCrossing"
+            },
+            {
+                "name": "Hagacher",
+                "position": [
+                    6371.05,
+                    14497.7
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "Oberdorf",
+                "position": [
+                    5783.87,
+                    11764.3
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "",
+                "position": [
+                    5736.96,
+                    11711.4
+                ],
+                "type": "BorderCrossing"
+            },
+            {
+                "name": "Bruchtal",
+                "position": [
+                    4946.57,
+                    13422.7
+                ],
+                "type": "VegetationBroadleaf"
+            },
+            {
+                "name": "Cholholz",
+                "position": [
+                    6891.28,
+                    13136.7
+                ],
+                "type": "VegetationBroadleaf"
+            },
+            {
+                "name": "Hagental",
+                "position": [
+                    8300.8,
+                    12245.3
+                ],
+                "type": "VegetationFir"
+            },
+            {
+                "name": "Muttenz",
+                "position": [
+                    6345.94,
+                    10629.9
+                ],
+                "type": "City"
+            },
+            {
+                "name": "",
+                "position": [
+                    6244.47,
+                    10524.1
+                ],
+                "type": "BorderCrossing"
+            },
+            {
+                "name": "HofHorn",
+                "position": [
+                    7634.35,
+                    11798.1
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "Lochacker",
+                "position": [
+                    6356.22,
+                    9959.5
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "Elbishof",
+                "position": [
+                    8688.65,
+                    9859.1
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "Elbiswald",
+                "position": [
+                    9006.42,
+                    10149.3
+                ],
+                "type": "VegetationFir"
+            },
+            {
+                "name": "MuttenzerKurve",
+                "position": [
+                    4932.01,
+                    11742.3
+                ],
+                "type": "Marine"
+            },
+            {
+                "name": "Rossbode",
+                "position": [
+                    10458.9,
+                    9335.48
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "Muenchenstein",
+                "position": [
+                    6563.11,
+                    9539.46
+                ],
+                "type": "City"
+            },
+            {
+                "name": "",
+                "position": [
+                    6606.11,
+                    9674.35
+                ],
+                "type": "BorderCrossing"
+            },
+            {
+                "name": "Abach",
+                "position": [
+                    6491.27,
+                    15964.4
+                ],
+                "type": "Local"
+            },
+            {
+                "name": "Chatzbach",
+                "position": [
+                    7800.91,
+                    9367.83
+                ],
+                "type": "City"
+            },
+            {
+                "name": "",
+                "position": [
+                    7819.75,
+                    9287.65
+                ],
+                "type": "BorderCrossing"
+            },
+            {
+                "name": "Bruderholz",
+                "position": [
+                    9832.37,
+                    9853.36
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "",
+                "position": [
+                    9824.04,
+                    9900.27
+                ],
+                "type": "BorderCrossing"
+            },
+            {
+                "name": "Aegerifeld",
+                "position": [
+                    8791.73,
+                    11095
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "Chamm",
+                "position": [
+                    7735.26,
+                    10039.3
+                ],
+                "type": "VegetationFir"
+            },
+            {
+                "name": "Napf",
+                "position": [
+                    11080.8,
+                    11791.7
+                ],
+                "type": "Hill"
+            },
+            {
+                "name": "Oriswald",
+                "position": [
+                    7331.12,
+                    10480.1
+                ],
+                "type": "VegetationFir"
+            },
+            {
+                "name": "Hafen",
+                "position": [
+                    9191.09,
+                    17644.3
+                ],
+                "type": "Local"
+            },
+            {
+                "name": "Sagewerk",
+                "position": [
+                    8738.2,
+                    8973.26
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "Freidorf",
+                "position": [
+                    8527.83,
+                    17106.8
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "Aarenbucht",
+                "position": [
+                    7285.61,
+                    16817.4
+                ],
+                "type": "Marine"
+            },
+            {
+                "name": "Siechwasser",
+                "position": [
+                    11032.4,
+                    16433.6
+                ],
+                "type": "Marine"
+            },
+            {
+                "name": "Finsterwald",
+                "position": [
+                    8836.15,
+                    13199.9
+                ],
+                "type": "VegetationFir"
+            },
+            {
+                "name": "Suurbaum",
+                "position": [
+                    5402.95,
+                    14995.3
+                ],
+                "type": "VegetationBroadleaf"
+            },
+            {
+                "name": "Olten",
+                "position": [
+                    10169.7,
+                    16382.6
+                ],
+                "type": "City"
+            },
+            {
+                "name": "Ruemlingen",
+                "position": [
+                    10686.2,
+                    15883.3
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "KleineEgg",
+                "position": [
+                    7311.46,
+                    13617.9
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "Eichmatt",
+                "position": [
+                    8742.55,
+                    12528.1
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "",
+                "position": [
+                    10097.5,
+                    14958.4
+                ],
+                "type": "VegetationBroadleaf"
+            },
+            {
+                "name": "Magden",
+                "position": [
+                    10742.6,
+                    17071.8
+                ],
+                "type": "Local"
+            },
+            {
+                "name": "Hirsegg",
+                "position": [
+                    10289.7,
+                    14097.6
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "Hasenmatt",
+                "position": [
+                    11170,
+                    18315.6
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "",
+                "position": [
+                    10207.8,
+                    13289.7
+                ],
+                "type": "VegetationBroadleaf"
+            },
+            {
+                "name": "Hischholz",
+                "position": [
+                    11032.5,
+                    10975.2
+                ],
+                "type": "VegetationFir"
+            },
+            {
+                "name": "",
+                "position": [
+                    9131.78,
+                    11014.1
+                ],
+                "type": "ViewPoint"
+            },
+            {
+                "name": "Lausen",
+                "position": [
+                    12003.4,
+                    15247.7
+                ],
+                "type": "City"
+            },
+            {
+                "name": "Ey",
+                "position": [
+                    10849.6,
+                    12696.9
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "Rorighof",
+                "position": [
+                    12363.7,
+                    8238.61
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "Arxhof",
+                "position": [
+                    11705.3,
+                    10232.6
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "Ramsehoger",
+                "position": [
+                    9000.58,
+                    7573.98
+                ],
+                "type": "Hill"
+            },
+            {
+                "name": "Blasflue",
+                "position": [
+                    4974.94,
+                    9265.07
+                ],
+                "type": "Hill"
+            },
+            {
+                "name": "Ramsebode",
+                "position": [
+                    8266.48,
+                    7837.95
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "",
+                "position": [
+                    7752.71,
+                    7770.58
+                ],
+                "type": "VegetationFir"
+            },
+            {
+                "name": "",
+                "position": [
+                    6866.12,
+                    10086.9
+                ],
+                "type": "ViewPoint"
+            },
+            {
+                "name": "Unterdorf",
+                "position": [
+                    4963.17,
+                    11200
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "",
+                "position": [
+                    10584.7,
+                    14082.8
+                ],
+                "type": "BorderCrossing"
+            },
+            {
+                "name": "",
+                "position": [
+                    10102.7,
+                    16452.3
+                ],
+                "type": "BorderCrossing"
+            },
+            {
+                "name": "",
+                "position": [
+                    10645.2,
+                    17044.6
+                ],
+                "type": "BorderCrossing"
+            },
+            {
+                "name": "",
+                "position": [
+                    10719.7,
+                    15763.8
+                ],
+                "type": "BorderCrossing"
+            },
+            {
+                "name": "",
+                "position": [
+                    12233.7,
+                    15432.9
+                ],
+                "type": "BorderCrossing"
+            },
+            {
+                "name": "Luzern",
+                "position": [
+                    14493.9,
+                    14237.5
+                ],
+                "type": "Capital"
+            },
+            {
+                "name": "Bunig",
+                "position": [
+                    12578.2,
+                    14238.8
+                ],
+                "type": "Local"
+            },
+            {
+                "name": "Emmen",
+                "position": [
+                    15562,
+                    13477.2
+                ],
+                "type": "City"
+            },
+            {
+                "name": "Sempachersee",
+                "position": [
+                    14060.7,
+                    15619.8
+                ],
+                "type": "Marine"
+            },
+            {
+                "name": "Griensee",
+                "position": [
+                    14165.4,
+                    12144.4
+                ],
+                "type": "Marine"
+            },
+            {
+                "name": "International Airport",
+                "position": [
+                    14534.1,
+                    16865
+                ],
+                "type": "Local"
+            },
+            {
+                "name": "",
+                "position": [
+                    16082.5,
+                    13398.2
+                ],
+                "type": "ViewPoint"
+            },
+            {
+                "name": "Malters",
+                "position": [
+                    13595.8,
+                    13989.5
+                ],
+                "type": "Local"
+            },
+            {
+                "name": "Wolhusen",
+                "position": [
+                    14254,
+                    12862.9
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "",
+                "position": [
+                    13212.1,
+                    14530.5
+                ],
+                "type": "ViewPoint"
+            },
+            {
+                "name": "Horw",
+                "position": [
+                    17086.7,
+                    13763
+                ],
+                "type": "City"
+            },
+            {
+                "name": "Romoos",
+                "position": [
+                    12886.5,
+                    11785.6
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "Meggen",
+                "position": [
+                    16269.4,
+                    15249.7
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "",
+                "position": [
+                    12350.4,
+                    12925.4
+                ],
+                "type": "VegetationFir"
+            },
+            {
+                "name": "Hundsrugge",
+                "position": [
+                    15122.1,
+                    12584.9
+                ],
+                "type": "Hill"
+            },
+            {
+                "name": "Liestal",
+                "position": [
+                    12709.5,
+                    9750.36
+                ],
+                "type": "City"
+            },
+            {
+                "name": "Sachseln",
+                "position": [
+                    14958.5,
+                    10854.4
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "Schrattenfluh",
+                "position": [
+                    11910.9,
+                    5812.38
+                ],
+                "type": "RockArea"
+            },
+            {
+                "name": "",
+                "position": [
+                    13289.4,
+                    9533.54
+                ],
+                "type": "VegetationFir"
+            },
+            {
+                "name": "Sissach",
+                "position": [
+                    11111.8,
+                    8805.33
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "Schimbrig",
+                "position": [
+                    15405.9,
+                    9529.93
+                ],
+                "type": "Hill"
+            },
+            {
+                "name": "",
+                "position": [
+                    11484.5,
+                    7883.21
+                ],
+                "type": "VegetationFir"
+            },
+            {
+                "name": "",
+                "position": [
+                    10095,
+                    7759.54
+                ],
+                "type": "ViewPoint"
+            },
+            {
+                "name": "",
+                "position": [
+                    9548.85,
+                    7701.53
+                ],
+                "type": "VegetationFir"
+            },
+            {
+                "name": "Buckten",
+                "position": [
+                    5345.95,
+                    5752.97
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "Eggwil",
+                "position": [
+                    7383.05,
+                    6598.69
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "Pfeffikon",
+                "position": [
+                    18371.7,
+                    17083.3
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "Suhrenfeld",
+                "position": [
+                    16151.9,
+                    18676.5
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "Pilatus",
+                "position": [
+                    18845.1,
+                    10914.3
+                ],
+                "type": "Hill"
+            },
+            {
+                "name": "Signau",
+                "position": [
+                    5990.39,
+                    8893.48
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "Schangen",
+                "position": [
+                    9153.63,
+                    5566.57
+                ],
+                "type": "City"
+            },
+            {
+                "name": "Heiligholz",
+                "position": [
+                    5770.16,
+                    6583.43
+                ],
+                "type": "VegetationBroadleaf"
+            },
+            {
+                "name": "Hasle",
+                "position": [
+                    3713.56,
+                    9864.28
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "Worb",
+                "position": [
+                    2256.95,
+                    7653.43
+                ],
+                "type": "City"
+            },
+            {
+                "name": "Munsingen",
+                "position": [
+                    3639.66,
+                    8066.65
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "Ittingen",
+                "position": [
+                    2075.44,
+                    10005.1
+                ],
+                "type": "City"
+            },
+            {
+                "name": "Hindelbank",
+                "position": [
+                    2501.03,
+                    11203.7
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "",
+                "position": [
+                    3139.13,
+                    8050.08
+                ],
+                "type": "ViewPoint"
+            },
+            {
+                "name": "Homburg",
+                "position": [
+                    2877.75,
+                    6243.71
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "",
+                "position": [
+                    3106.56,
+                    9998.6
+                ],
+                "type": "VegetationBroadleaf"
+            },
+            {
+                "name": "",
+                "position": [
+                    3475.19,
+                    10745.6
+                ],
+                "type": "VegetationBroadleaf"
+            },
+            {
+                "name": "Teufelsgraben",
+                "position": [
+                    3346.38,
+                    10593.1
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "Schrattendamm",
+                "position": [
+                    10792.3,
+                    4821.55
+                ],
+                "type": "Marine"
+            },
+            {
+                "name": "Jurabucht",
+                "position": [
+                    1586.78,
+                    12603.2
+                ],
+                "type": "Marine"
+            },
+            {
+                "name": "Goms",
+                "position": [
+                    5222.58,
+                    8232.34
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "Hubel",
+                "position": [
+                    985.562,
+                    10874
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "Airbase",
+                "position": [
+                    4670.9,
+                    4540.43
+                ],
+                "type": "Local"
+            },
+            {
+                "name": "Hungerschwand",
+                "position": [
+                    8998.98,
+                    3507.31
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "",
+                "position": [
+                    5101.83,
+                    3780.77
+                ],
+                "type": "VegetationFir"
+            },
+            {
+                "name": "",
+                "position": [
+                    4337.49,
+                    2922.17
+                ],
+                "type": "VegetationFir"
+            },
+            {
+                "name": "",
+                "position": [
+                    5229.34,
+                    2401.76
+                ],
+                "type": "VegetationFir"
+            },
+            {
+                "name": "Farnen",
+                "position": [
+                    13132.1,
+                    6999.79
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "Sorenberg",
+                "position": [
+                    13607.5,
+                    5370.67
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "Feldmoos",
+                "position": [
+                    779.625,
+                    6724.02
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "Alpnach",
+                "position": [
+                    18628.2,
+                    9435.52
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "Giswil",
+                "position": [
+                    16926.2,
+                    5121.04
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "Rorenwald",
+                "position": [
+                    15296.6,
+                    6298.68
+                ],
+                "type": "VegetationFir"
+            },
+            {
+                "name": "",
+                "position": [
+                    14848.1,
+                    5955.22
+                ],
+                "type": "VegetationFir"
+            },
+            {
+                "name": "",
+                "position": [
+                    15729,
+                    6565.36
+                ],
+                "type": "VegetationFir"
+            },
+            {
+                "name": "",
+                "position": [
+                    17104.8,
+                    7741.18
+                ],
+                "type": "VegetationFir"
+            },
+            {
+                "name": "Rorenpass",
+                "position": [
+                    14739.7,
+                    5288
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "Waldegg",
+                "position": [
+                    8493.98,
+                    964.439
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "",
+                "position": [
+                    8351.56,
+                    3063.4
+                ],
+                "type": "RockArea"
+            },
+            {
+                "name": "South Airstrip",
+                "position": [
+                    18311.3,
+                    2210.95
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "Froburg",
+                "position": [
+                    17218.1,
+                    3575.03
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "",
+                "position": [
+                    18324.5,
+                    5276.86
+                ],
+                "type": "VegetationFir"
+            },
+            {
+                "name": "Rothorn",
+                "position": [
+                    13710.9,
+                    4177.55
+                ],
+                "type": "Hill"
+            },
+            {
+                "name": "Brienz",
+                "position": [
+                    14501.1,
+                    2874.77
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "Nordstern",
+                "position": [
+                    9952.22,
+                    17997.1
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "Bernerplatte",
+                "position": [
+                    1263.99,
+                    3205.85
+                ],
+                "type": "Village"
+            },
+            {
+                "name": "Goldwil",
+                "position": [
+                    11014.6,
+                    2035.2
+                ],
+                "type": "Village"
+            }
+        ]
+    }
+}

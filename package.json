@@ -1,0 +1,23 @@
+{
+  "name": "dayz-maps",
+  "version": "1.0.0",
+  "description": "Leaflet.js ready maps for DayZ",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js"
+  },
+  "keywords": [
+    "leaflet",
+    "maps",
+    "dayz",
+    "arma",
+    "bohemia",
+    "interactive"
+  ],
+  "author": "mr-guard",
+  "license": "MIT",
+  "dependencies": {
+    "fs-extra": "^10.0.0"
+  }
+}
