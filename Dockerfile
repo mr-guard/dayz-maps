@@ -60,7 +60,7 @@ RUN cd /usr/local/src && \
 	tar -xzf master.tgz && \
     rm master.tgz && \
     mkdir mikero && cd mikero && \
-    curl -o mikero.tgz -L https://mikero.bytex.digital/api/download?filename=depbo-tools-0.8.07-linux-64bit.tgz && \
+    curl -o mikero.tgz -L https://github.com/arma-actions/mikero-tools/raw/latest/linux/depbo-tools-0.8.41-linux-64bit.tgz && \
     tar --strip-components=1 -xzf mikero.tgz && \
     rm mikero.tgz && cd .. && \
     cp -r mikero/bin /usr/local && \
