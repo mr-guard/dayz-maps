@@ -80,7 +80,7 @@
         });
 
         const zoom = Math.ceil(
-            Math.log(data.worldSize / 256) / Math.log(2)
+            Math.log(data.worldSize / (256 / (data.scale ? data.scale : 1))) / Math.log(2)
         );
         const project = (coords) => {
             return map.project(coords, zoom);

@@ -11,6 +11,7 @@ RUN curl -sL https://deb.nodesource.com/setup_12.x | bash && \
         software-properties-common \
         wget \
         curl \
+        lftp \
         unzip \
         lib32gcc1 \
         ca-certificates \
@@ -68,11 +69,11 @@ RUN cd /usr/local/src && \
 
 COPY --from=acemod/armake /usr/local/bin/armake /usr/local/bin/armake
 
-RUN sed -i 's/name="memory" value="256MiB"/name="memory" value="4GB"/g' /etc/ImageMagick-6/policy.xml && \
-    sed -i 's/name="map" value="512MiB"/name="map" value="1GB"/g' /etc/ImageMagick-6/policy.xml && \
-    sed -i 's/name="width" value="16KP"/name="width" value="64KP"/g' /etc/ImageMagick-6/policy.xml && \
-    sed -i 's/name="height" value="16KP"/name="height" value="64KP"/g' /etc/ImageMagick-6/policy.xml && \
-    sed -i 's/name="area" value="128MB"/name="area" value="512MB"/g' /etc/ImageMagick-6/policy.xml && \
-    sed -i 's/name="disk" value="1GiB"/name="disk" value="4GiB"/g' /etc/ImageMagick-6/policy.xml
+RUN sed -i 's/name="memory" value="256MiB"/name="memory" value="8GB"/g' /etc/ImageMagick-6/policy.xml && \
+    sed -i 's/name="map" value="512MiB"/name="map" value="16GB"/g' /etc/ImageMagick-6/policy.xml && \
+    sed -i 's/name="width" value="16KP"/name="width" value="128KP"/g' /etc/ImageMagick-6/policy.xml && \
+    sed -i 's/name="height" value="16KP"/name="height" value="128KP"/g' /etc/ImageMagick-6/policy.xml && \
+    sed -i 's/name="area" value="128MB"/name="area" value="2GB"/g' /etc/ImageMagick-6/policy.xml && \
+    sed -i 's/name="disk" value="1GiB"/name="disk" value="16GiB"/g' /etc/ImageMagick-6/policy.xml
 
 ENTRYPOINT [ ]

@@ -5,6 +5,7 @@
             "worlds_chernarusplus.pbo",
             "worlds_chernarusplus_data.pbo"
         ],
+        "worldSize": 15360,
         "cfgWorlds": "DZ/worlds/chernarusplus/world/config.cpp",
         "layersFolder": "DZ/worlds/chernarusplus/data/layers"
     },
@@ -1210,5 +1211,39 @@
                 "type": "Village"
             }
         ]
+    },
+    "deerisle": {
+        "workshopId": "1602372402",
+        "extractPbos": [
+            "data.pbo",
+            "world.pbo"
+        ],
+        "shave": "64x64",
+        "worldSize": 16384,
+        "scale": 2,
+        "cfgWorlds": "deerisle/world/config.cpp",
+        "layersFolder": "deerisle/data/layers"
+    },
+    "Esseker": {
+        "workshopId": "2462896799",
+        "extractPbos": [
+            "data.pbo",
+            "World.pbo"
+        ],
+        "shave": "56x56",
+        "worldSize": 12800,
+        "cfgWorlds": "Esseker/World/config.cpp",
+        "layersFolder": "Esseker/data/layers"
+    },
+    "namalsk": {
+        "workshopId": "2289456201",
+        "extractPbos": [
+            "namalsk_terrain.pbo",
+            "namalsk_data.pbo"
+        ],
+        "shave": "56x56",
+        "worldSize": 12800,
+        "cfgWorlds": "nst/namalsk/terrain/config.cpp",
+        "layersFolder": "nst/namalsk/data/layers"
     }
 }

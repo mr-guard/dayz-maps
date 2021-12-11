@@ -125,12 +125,12 @@ const cfg2json = (input, level) => {
         const line = input.slice(ptr, ptr + eol).trim();
         // eslint-disable-next-line no-cond-assign
         if (classMatch = line.match(/^class\s+([a-zA-Z0-9_]+)((\s*:\s*([a-zA-Z0-9_]+)){0,1})/i)) {
-            if (debug) {
-                console.log('classMatch', classMatch[1], level);
-            }
             const nextBracket = find(input, ptr, '{');
             const nextSemi = find(input, ptr, ';');
-            if (nextBracket < nextSemi) {
+            if (debug) {
+                console.log('classMatch', classMatch[1], level, nextBracket, nextSemi);
+            }
+            if (nextBracket !== -1 && nextBracket < nextSemi) {
                 ptr += find(input, ptr, '{');
                 const innerStart = ptr;
                 let parenthesisCount = 1;
@@ -204,7 +204,7 @@ const cfg2json = (input, level) => {
                 }
                 ptr += 1;
             }
-            const inner = `[${input.slice(innerStart, ptr - 1).trim()}]`;
+            const inner = `[${input.slice(innerStart, ptr - 1).replace(/\{/g, '[').replace(/\}/g, ']').trim()}]`;
             output[arrMatch[1]] = JSON.parse(inner);
             eol = find(input, ptr, '\n');
         }
@@ -226,7 +226,13 @@ const exportMap = async (worldName) => {
     const extraction = path.join(extractionBase, worldName);
     
     if (fs.existsSync(extraction)) {
-        fse.removeSync(extraction);
+        if (process.env.FORCE_EXPORT) {
+            fse.removeSync(extraction);
+        } else {
+            console.log(`Skipping ${worldName} because extraction already exists and FORCE_EXPORT env var was not set`);
+            return;
+        }
+        
     }
     fse.ensureDirSync(extraction);
 
@@ -307,6 +313,7 @@ const exportMap = async (worldName) => {
         tileSize: config.tileSize ? config.tileSize : null,
         center: config.center ? config.center : [cfgCenter[0], cfgCenter[1]],
         worldSize: config.worldSize ? config.worldSize : Math.max(cfgCenter[0], cfgCenter[1]) * 2,
+        scale: config.scale ? config.scale : 1,
         preview: 'preview.png',
         fullSize: 'map.png',
         locations: locations,
@@ -363,6 +370,24 @@ const exportMap = async (worldName) => {
             })
     );
     
+    console.log('Size check...');
+    await Promise.all(
+        fse.readdirSync(extraction)
+            .filter((x) => x.startsWith('s_') && x.endsWith('.png'))
+            .map((x) => {
+                console.log(x);
+                return spawn(
+                    'convert',
+                    [
+                        '-scale', '512x512<',
+                        x, //s_*.png`
+                        x,
+                    ],
+                    extraction
+                );
+            })
+    );
+
     console.log('Shaving...');
     await Promise.all(
         fse.readdirSync(extraction)
@@ -372,14 +397,14 @@ const exportMap = async (worldName) => {
                 return spawn(
                     'mogrify',
                     [
-                        '-shave', '16x16',
+                        '-shave', (config.shave ? config.shave : '16x16'),
                         x, //s_*.png`
                     ],
                     extraction
                 );
             })
     );
-
+    
     console.log('Merge stage 1...');
     let maxTile = 0;
     while (true) {
