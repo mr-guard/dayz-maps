@@ -67,6 +67,8 @@ RUN cd /usr/local/src && \
     cp -r mikero/lib /usr/local && \
     ldconfig
 
+RUN npm i -g fs-extra
+
 COPY --from=acemod/armake /usr/local/bin/armake /usr/local/bin/armake
 
 RUN sed -i 's/name="memory" value="256MiB"/name="memory" value="8GB"/g' /etc/ImageMagick-6/policy.xml && \

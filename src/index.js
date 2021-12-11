@@ -213,6 +213,61 @@ const cfg2json = (input, level) => {
     return output;
 };
 
+const downloadMap = async (worldName) => {
+    
+    if (!data[worldName].workshopId) {
+        // update server
+        await spawnSteam(
+            [
+                '+@sSteamCmdForcePlatformType windows',
+                ...(process.env.STEAM_GUARD ? ['+set_steam_guard_code', process.env.STEAM_GUARD] : []),
+                '+login', process.env.STEAM_USER, process.env.STEAM_PASSWORD,
+                '+force_install_dir', rawData,
+                '+app_update', 221100, // 'validate',
+                '+quit',
+            ]
+        );
+    } else {
+        await spawnSteam(
+            [
+                '+@sSteamCmdForcePlatformType windows',
+                ...(process.env.STEAM_GUARD ? ['+set_steam_guard_code', process.env.STEAM_GUARD] : []),
+                '+login', process.env.STEAM_USER, process.env.STEAM_PASSWORD,
+                '+force_install_dir', rawDataWs,
+                '+workshop_download_item', 221100, data[worldName].workshopId, // 'validate',
+                '+quit',
+            ]
+        ).catch((err) => {
+            console.error(`Steam mod exit: ${err}`);
+            process.exit(1);
+        });
+    }
+    
+};
+
+const uploadMap = async (worldName) => {
+    
+    const extraction = path.join(extractionBase, worldName);
+    
+    // export maps
+    if (process.env.EXPORT_HOST) {
+        console.log('Exporting');
+        await spawn(
+            'lftp',
+            [
+                '-e',
+                `open ${process.env.EXPORT_HOST}; user ${process.env.EXPORT_USER} ${process.env.EXPORT_PASSWORD}; mirror -X .* -X .*/ --reverse --verbose --delete ${extraction}/ ${process.env.EXPORT_DESTINATION}/${worldName}/; bye`,
+            ]
+        ).catch((err) => {
+            console.error(`Export exit: ${err}`);
+            process.exit(1);
+        });
+
+        console.log('Cleanup');
+        fse.removeSync(extraction);
+    }
+};
+
 const exportMap = async (worldName) => {
     console.log(`Running export for ${worldName}`);
     
@@ -235,6 +290,8 @@ const exportMap = async (worldName) => {
         
     }
     fse.ensureDirSync(extraction);
+
+    await downloadMap(worldName);
 
     for (const pbo of config.extractPbos) {
         if (config.workshopId) {
@@ -486,37 +543,11 @@ const exportMap = async (worldName) => {
         ],
         extraction
     );
+
+    await uploadMap(worldName);
 }
 
 (async () => {
-
-    // update server
-    await spawnSteam(
-        [
-            '+@sSteamCmdForcePlatformType windows',
-            ...(process.env.STEAM_GUARD ? ['+set_steam_guard_code', process.env.STEAM_GUARD] : []),
-            '+login', process.env.STEAM_USER, process.env.STEAM_PASSWORD,
-            '+force_install_dir', rawData,
-            '+app_update', 221100, // 'validate',
-            '+quit',
-        ]
-    );
-
-    // update mods
-    for (const entry of Object.keys(data)) {
-        if (data[entry].workshopId) {
-            await spawnSteam(
-                [
-                    '+@sSteamCmdForcePlatformType windows',
-                    ...(process.env.STEAM_GUARD ? ['+set_steam_guard_code', process.env.STEAM_GUARD] : []),
-                    '+login', process.env.STEAM_USER, process.env.STEAM_PASSWORD,
-                    '+force_install_dir', rawDataWs,
-                    '+workshop_download_item', 221100, data[entry].workshopId, // 'validate',
-                    '+quit',
-                ]
-            ).catch((err) => console.error(`Steam mod exit: ${err}`));
-        }
-    }
 
     if (process.argv[2]) {
         await exportMap(process.argv[2]);
@@ -524,21 +555,6 @@ const exportMap = async (worldName) => {
         for (const entry of Object.keys(data)) {
             await exportMap(entry);
         }
-    }
-
-    // export maps
-    if (process.env.EXPORT_HOST) {
-        console.log('Exporting');
-        await spawn(
-            'lftp',
-            [
-                '-e',
-                `open ${process.env.EXPORT_HOST}; user ${process.env.EXPORT_USER} ${process.env.EXPORT_PASSWORD}; mirror -X .* -X .*/ --reverse --verbose --delete ${extractionBase}/ ${process.env.EXPORT_DESTINATION}; bye`,
-            ]
-        ).catch((err) => console.error(`Export exit: ${err}`));
-
-        console.log('Cleanup');
-        fse.removeSync(extractionBase);
     }
 
     console.log('Done');
