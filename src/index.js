@@ -526,5 +526,21 @@ const exportMap = async (worldName) => {
         }
     }
 
+    // export maps
+    if (process.env.EXPORT_HOST) {
+        console.log('Exporting');
+        await spawn(
+            'lftp',
+            [
+                '-e',
+                `open ${process.env.EXPORT_HOST}; user ${process.env.EXPORT_USER} ${process.env.EXPORT_PASSWORD}; mirror -X .* -X .*/ --reverse --verbose --delete ${extractionBase}/ ${process.env.EXPORT_DESTINATION}; bye`,
+            ]
+        ).catch((err) => console.error(`Export exit: ${err}`));
+
+        console.log('Cleanup');
+        fse.removeSync(extractionBase);
+    }
+
     console.log('Done');
-})();
+})()
+.catch((err) => process.exit(1, err));
