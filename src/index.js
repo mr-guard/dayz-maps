@@ -3,40 +3,43 @@ const fs = require('fs');
 const fse = require('fs-extra');
 const child_process = require('child_process');
 const data = JSON.parse(fs.readFileSync('src/data.json'));
-const rawData = '/cache/dayzmaps/gamedata';
-const rawDataWs = '/cache/dayzmaps/wsdata';
-const extractionBase = '/cache/dayzmaps/extraction';
-
-fse.ensureDirSync(extractionBase);
-fse.ensureDirSync(rawDataWs);
-fse.ensureDirSync(rawData);
-
-// write and overview page
-const mapNames = Object.keys(data);
-const overviewTemplate = `<html lang="en-US">
-<head>
-  <meta charset="UTF-8">
-  <title>DayZ Maps</title>
-</head>
-<body>
-    <h1>Maps:</h1>
-    <table>
-    <tbody>
-        ${
-            mapNames.map((mapName) => `
-            <tr>
-            <td><a href="./${mapName}/index.html">${mapName}</a></td>
-            <td><a href="./${mapName}/index.html"><img src="./${mapName}/preview.png" width="200" height="200"></a></td>
-            </tr>
-            `).join('\n')
-        }
-    </tbody>
-    </table>
-</body>
-</html>`;
-fse.writeFileSync(path.join(extractionBase, 'index.html'), overviewTemplate);
-
+const rawData = process.env.GAME_DATA_PATH || '/cache/dayzmaps/gamedata';
+const rawDataWs = process.env.WS_DATA_PATH || '/cache/dayzmaps/wsdata';
+const extractionBase = process.env.EXTRACTION_PATH || 'extraction';
 const debug = false;
+
+const createBaseDirectories = () => {
+    fse.ensureDirSync(extractionBase);
+    fse.ensureDirSync(rawDataWs);
+    fse.ensureDirSync(rawData);
+};
+
+const createOverviewPage = () => {
+    // write and overview page
+    const mapNames = Object.keys(data);
+    const overviewTemplate = `<html lang="en-US">
+    <head>
+      <meta charset="UTF-8">
+      <title>DayZ Maps</title>
+    </head>
+    <body>
+        <h1>Maps:</h1>
+        <table>
+        <tbody>
+            ${
+                mapNames.map((mapName) => `
+                <tr>
+                <td><a href="./${mapName}/index.html">${mapName}</a></td>
+                <td><a href="./${mapName}/index.html"><img src="./${mapName}/preview.png" width="200" height="200"></a></td>
+                </tr>
+                `).join('\n')
+            }
+        </tbody>
+        </table>
+    </body>
+    </html>`;
+    fse.writeFileSync(path.join(extractionBase, 'index.html'), overviewTemplate);
+};
 
 const spawn = (cmd, args, cwd) => {
     return new Promise((res, rej) => {
@@ -243,29 +246,6 @@ const downloadMap = async (worldName) => {
         });
     }
     
-};
-
-const uploadMap = async (worldName) => {
-    
-    const extraction = path.join(extractionBase, worldName);
-    
-    // export maps
-    if (process.env.EXPORT_HOST) {
-        console.log('Exporting');
-        await spawn(
-            'lftp',
-            [
-                '-e',
-                `${process.env.EXPORT_PARAMS || ''} open ${process.env.EXPORT_HOST}; user ${process.env.EXPORT_USER} ${process.env.EXPORT_PASSWORD}; mirror -X .* -X .*/ --reverse --verbose --delete ${extraction}/ ${process.env.EXPORT_DESTINATION}/${worldName}/; bye`,
-            ]
-        ).catch((err) => {
-            console.error(`Export exit: ${err}`);
-            process.exit(1);
-        });
-
-        console.log('Cleanup');
-        fse.removeSync(extraction);
-    }
 };
 
 const exportMap = async (worldName) => {
@@ -544,13 +524,20 @@ const exportMap = async (worldName) => {
         extraction
     );
 
-    await uploadMap(worldName);
 }
 
 (async () => {
 
+    createBaseDirectories();
+
     if (process.argv[2]) {
-        await exportMap(process.argv[2]);
+
+        if (process.argv[2] === 'basefiles') {
+            createOverviewPage();
+        } else {
+            await exportMap(process.argv[2]);
+        }
+
     } else {
         for (const entry of Object.keys(data)) {
             await exportMap(entry);
@@ -559,4 +546,7 @@ const exportMap = async (worldName) => {
 
     console.log('Done');
 })()
-.catch((err) => process.exit(1, err));
+.catch((err) => {
+    console.error('Uncaught:', err);
+    process.exit(1);
+});
