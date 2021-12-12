@@ -256,7 +256,7 @@ const uploadMap = async (worldName) => {
             'lftp',
             [
                 '-e',
-                `open ${process.env.EXPORT_HOST}; user ${process.env.EXPORT_USER} ${process.env.EXPORT_PASSWORD}; mirror -X .* -X .*/ --reverse --verbose --delete ${extraction}/ ${process.env.EXPORT_DESTINATION}/${worldName}/; bye`,
+                `${process.env.EXPORT_PARAMS || ''} open ${process.env.EXPORT_HOST}; user ${process.env.EXPORT_USER} ${process.env.EXPORT_PASSWORD}; mirror -X .* -X .*/ --reverse --verbose --delete ${extraction}/ ${process.env.EXPORT_DESTINATION}/${worldName}/; bye`,
             ]
         ).catch((err) => {
             console.error(`Export exit: ${err}`);
