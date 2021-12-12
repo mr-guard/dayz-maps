@@ -281,7 +281,7 @@ const exportMap = async (worldName) => {
     const extraction = path.join(extractionBase, worldName);
     
     if (fs.existsSync(extraction)) {
-        if (process.env.FORCE_EXPORT) {
+        if (process.env.FORCE_EXPORT || process.env.EXPORT_HOST) {
             fse.removeSync(extraction);
         } else {
             console.log(`Skipping ${worldName} because extraction already exists and FORCE_EXPORT env var was not set`);
