@@ -12,6 +12,8 @@ RUN curl -sL https://deb.nodesource.com/setup_12.x | bash && \
         wget \
         curl \
         lftp \
+        sshpass \
+        jq \
         unzip \
         lib32gcc1 \
         ca-certificates \
