@@ -1,2 +1,5 @@
 node_modules
 extraction
+.env
+wsdata
+gamedata

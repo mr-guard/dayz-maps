@@ -1245,5 +1245,70 @@
         "worldSize": 12800,
         "cfgWorlds": "nst/namalsk/terrain/config.cpp",
         "layersFolder": "nst/namalsk/data/layers"
+    },
+    "Banov": {
+        "workshopId": "2415195639",
+        "extractPbos": [
+            "data.pbo",
+            "world.pbo"
+        ],
+        "shave": "16x16",
+        "worldSize": 16384,
+        "cfgWorlds": "Banov/world/config.cpp",
+        "layersFolder": "Banov/data/layers"
+    },
+    "Takistan": {
+        "workshopId": "2153795105",
+        "extractPbos": [
+            "data.pbo",
+            "world.pbo"
+        ],
+        "shave": "56x56",
+        "worldSize": 14884,
+        "cfgWorlds": "Takistan/world/config.cpp",
+        "layersFolder": "Takistan/data/layers"
+    },
+    "pripyat": {
+        "workshopId": "2405175615",
+        "extractPbos": [
+            "terrain.pbo",
+            "data.pbo"
+        ],
+        "shave": "16x16",
+        "worldSize": 20480,
+        "cfgWorlds": "ff15/ff15_pripyat/terrain/config.cpp",
+        "layersFolder": "ff15/ff15_pripyat/data/layers"
+    },
+    "Chiemsee": {
+        "workshopId": "1580589252",
+        "extractPbos": [
+            "worldconfig.pbo",
+            "data.pbo"
+        ],
+        "shave": "96x96",
+        "worldSize": 10240,
+        "cfgWorlds": "test3_map/Chiemsee/worldconfig/config.cpp",
+        "layersFolder": "test3_map/Chiemsee/data/Layers"
+    },
+    "Ros": {
+        "workshopId": "2390417799",
+        "extractPbos": [
+            "Ros.pbo"
+        ],
+        "shave": "16x16",
+        "worldSize": 20480,
+        "cfgWorlds": "Ros/config.cpp",
+        "layersFolder": "Ros/data/layers"
+    },
+    "Rostow": {
+        "workshopId": "2344585107",
+        "extractPbos": [
+            "Rostow.pbo",
+            "rostow_data.pbo"
+        ],
+        "shave": "32x32",
+        "worldSize": 14336,
+        "cfgWorlds": "Rostow/config.cpp",
+        "layersFolder": "rostow_data/data/layers"
     }
 }
